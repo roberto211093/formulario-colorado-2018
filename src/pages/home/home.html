@@ -1,14 +1,101 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar color="primary">
+    <ion-title style="text-align: left;">
+      Encuesta
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+    <form [formGroup]="registerForm" (ngSubmit)="doSave()">
+      <ion-list>
+        <ion-item>
+          <ion-label color="dark" floating>Nombre</ion-label>
+          <ion-input formControlName="name" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+          <p>Este campo es obligatorio</p>
+        </ion-item>
+        <ion-item>
+          <ion-label color="dark" floating>¿De donde vienes?</ion-label>
+          <ion-input formControlName="country" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="registerForm.get('country').errors && registerForm.get('country').dirty">
+          <p *ngIf="registerForm.get('country').errors && registerForm.get('country').dirty">Este campo es obligatorio</p>
+          <p *ngIf="registerForm.get('country').hasError('minlength')">El campo debe ser minimo de 3 caracteres</p>
+          <p *ngIf="registerForm.get('country').hasError('maxlength')">El campo debe ser maximo de 12 caracteres</p>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            ¿Nos recomendaría? <ion-badge color="secondary">{{ registerForm.value.recommend }}</ion-badge>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-range pin="true" step="1" color="royal" formControlName="recommend" max="9" min="1">
+            <ion-icon small range-left name="man"></ion-icon>
+            <ion-icon range-right name="man"></ion-icon>
+          </ion-range>
+        </ion-item>
+        <!--
+          <ion-list radio-group formControlName="recommend">
+            <ion-item>
+              <ion-label style="opacity: 0.4;">¿Nos recomendaría?</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label style="opacity: 0.4;">Si</ion-label>
+              <ion-radio value="Yes"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label style="opacity: 0.4;">No</ion-label>
+              <ion-radio value="No"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label style="opacity: 0.4;">Talvez</ion-label>
+              <ion-radio value="Maybe"></ion-radio>
+            </ion-item>
+        </ion-list>
+        <ion-item>
+          <ion-label>¿Acepto?</ion-label>
+          <ion-checkbox color="royal" formControlName="check"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime cancelText="cerrar" displayFormat="hh: mm A" formControlName="date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Peso <ion-badge>{{ registerForm.value.peso }}</ion-badge>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> Notifications</ion-label>
+          <ion-toggle formControlName="notifications"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Banda</ion-label>
+          <ion-select formControlName="banda" interface="alert">
+            <ion-option value="los prisioneros">Los prisioneros</ion-option>
+            <ion-option value="nirvana">Nirvana</ion-option>
+            <ion-option value="linkin">Linkin ...</ion-option>
+            <ion-option value="cafe">Cafe tacuba</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Banda</ion-label>
+          <ion-select formControlName="bandas" multiple="true">
+            <ion-option value="los prisioneros">Los prisioneros</ion-option>
+            <ion-option value="nirvana">Nirvana</ion-option>
+            <ion-option value="linkin">Linkin ...</ion-option>
+            <ion-option value="cafe">Cafe tacuba</ion-option>
+          </ion-select>
+        </ion-item>
+      -->
+      </ion-list>
+      <div class="padding">
+        <button ion-button block type="submit" [disabled]="!registerForm.valid">
+          Registrar
+        </button>
+      </div>
+    </form>
+  </ion-content>
+  

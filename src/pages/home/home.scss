@@ -1,3 +1,37 @@
 page-home {
-
+    ion-title {
+        background: url(../assets/imgs/logo_farellonescolorado.jpg);
+        background-position-x: right;
+        background-position-y: bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    ion-content {
+        background: url(../assets/imgs/ColoradoFondo.jpg);
+        background-position-x: left;
+        background-position-y: bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .item-md {
+        background-color: rgba(255, 255, 255, 0.75);
+    }
+    .item-ios {
+        background-color: rgba(255, 255, 255, 0.75);
+    }   
+    .toolbar-title-ios{
+        text-align: left;
+    }
+    .toolbar-content.toolbar-content-ios {
+        height: 56px;
+    }
+    ion-title.title.title-ios {
+        margin-top: 20px;
+        padding: 0px;
+        padding-bottom:  20px;
+        padding-left: 15px;
+    }
+    .item-wp {
+        background-color: rgba(255, 255, 255, 0.75);
+    }
 }
