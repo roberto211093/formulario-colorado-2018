@@ -38,14 +38,14 @@ export class HomePage {
     let recommend = this.registerForm.value['recommend'];
     let experience = this.registerForm.value['experience'];
 
-    let docRef = firestore.doc("clientes/"+rut);
-
     let alert = this.alertCtrl.create({
       title: '¡Genial!',
       subTitle: "Registraste con éxito a " + name,
       buttons: ['OK']
     });
     alert.present();
+    
+    let docRef = firestore.doc("clientes/"+rut);
 
     this.registerForm.setValue({rut:null,name:null,country:null,recommend:null,experience:null});
 
