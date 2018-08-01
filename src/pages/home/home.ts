@@ -21,7 +21,7 @@ export class HomePage {
   }
 
   doSave() {
-    let config = {
+    const config = {
       apiKey: "AIzaSyDIpjQHOfSyJcfVApKO9DJidjio-FAoM_8",
       authDomain: "formulario-colorado.firebaseapp.com",
       databaseURL: "https://formulario-colorado.firebaseio.com",
@@ -30,26 +30,32 @@ export class HomePage {
       messagingSenderId: "867644682177"
     };
     firebase.initializeApp(config);
-    let firestore = firebase.firestore();
+    const firestore = firebase.firestore();
 
-    let docRef = firestore.doc("clientes/"+this.registerForm.value['rut']);
+    let rut = this.registerForm.value['rut'];
     let name = this.registerForm.value['name'];
     let country = this.registerForm.value['country'];
     let recommend = this.registerForm.value['recommend'];
     let experience = this.registerForm.value['experience'];
+
+    let docRef = firestore.doc("clientes/"+rut);
+
+    let alert = this.alertCtrl.create({
+      title: '¡Genial!',
+      subTitle: "Registraste con éxito a " + name,
+      buttons: ['OK']
+    });
+    alert.present();
+
+    this.registerForm.setValue({rut:null,name:null,country:null,recommend:null,experience:null});
+
     docRef.set({
       name: name,
       country: country,
       recommend: recommend,
       experience: experience
     }).then(function(){
-     /* alert = this.alertCtrl.create({
-        title: '¡Genial!',
-        subTitle: "Registraste con éxito a " + this.registerForm.value['name'],
-        buttons: ['OK']
-      });
-      alert.present();*/
-      this.registerForm.setValue({rut:null,name:null,country:null,recommend:null,experience:null});
+      console.log('OK');
     }).catch(function(err){
     console.log(err);
       /*let alert = this.alertCtrl.create({

@@ -20,28 +20,31 @@
         <ion-label color="dark" floating>Nombre</ion-label>
         <ion-input formControlName="name" type="text"></ion-input>
       </ion-item>
+      <!--
       <ion-item *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
         <p>Este campo es obligatorio</p>
       </ion-item>
+      -->
       <ion-item>
         <ion-label color="dark" floating>¿De donde vienes?</ion-label>
         <ion-input formControlName="country" type="text"></ion-input>
       </ion-item>
+      <!--
       <ion-item *ngIf="registerForm.get('country').errors && registerForm.get('country').dirty">
         <p *ngIf="registerForm.get('country').errors && registerForm.get('country').dirty">Este campo es obligatorio</p>
         <p *ngIf="registerForm.get('country').hasError('minlength')">El campo debe ser minimo de 3 caracteres</p>
         <p *ngIf="registerForm.get('country').hasError('maxlength')">El campo debe ser maximo de 12 caracteres</p>
-      </ion-item>
+      </ion-item>-->
       <ion-item>
-          <ion-label color="dark">¿Como calificas tu experiencia gral?</ion-label>
-          <ion-select formControlName="experience" interface="alert">
-            <ion-option value="Muy Mala">Muy Mala</ion-option>
-            <ion-option value="Mala">Mala</ion-option>
-            <ion-option value="Regular">Regular</ion-option>
-            <ion-option value="Buena">Buena</ion-option>
-            <ion-option value="Excelente">Excelente</ion-option>
-          </ion-select>
-        </ion-item>
+        <ion-label color="dark">¿Como calificas tu experiencia gral?</ion-label>
+        <ion-select formControlName="experience" interface="alert">
+          <ion-option value="Muy Mala">Muy Mala</ion-option>
+          <ion-option value="Mala">Mala</ion-option>
+          <ion-option value="Regular">Regular</ion-option>
+          <ion-option value="Buena">Buena</ion-option>
+          <ion-option value="Excelente">Excelente</ion-option>
+        </ion-select>
+      </ion-item>
       <ion-item>
         <ion-label>
           ¿Nos recomendaría? <ion-badge color="secondary">{{ registerForm.value.recommend }}</ion-badge>
