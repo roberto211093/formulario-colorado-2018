@@ -29,7 +29,11 @@ export class HomePage {
       storageBucket: "formulario-colorado.appspot.com",
       messagingSenderId: "867644682177"
     };
-    firebase.initializeApp(config);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config);
+    } else {
+      firebase.app();
+    }
     const firestore = firebase.firestore();
 
     let rut = this.registerForm.value['rut'];
